@@ -14,18 +14,26 @@ function registration(): bool
     $pass = !empty($_POST['pass']) ? trim($_POST['pass']) : '';
 
     if (empty($login) || empty($pass)) {
-        $_SESSION['errors'] = 'Поля логин/пароль обязательны!';
+        $_SESSION['Errors'] = 'Поля логин/пароль обязательны!';
         return false;
     }
 
     $res = $pdo->prepare("SELECT COUNT(*) FROM users WHERE login = ?");
     $res->execute([$login]);
     if ($res->fetchColumn()) {
-        $_SESSION['errors'] = 'Данное имя уже используется';
+        $_SESSION['Errors'] = 'Данное имя уже используется';
         return false;
     }
 
-
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
+    $res = $pdo->prepare("INSERT INTO users (login, pass) VALUES (?,?)");
+    if($res->execute([$login, $pass])) {
+        $_SESSION['Success'] = 'Успешная регистрация';
+        return true;
+    } else {
+        $_SESSION['Errors'] = 'ошибка регистрации';
+        return false;
+    }
 
 
 }
