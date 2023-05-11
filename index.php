@@ -5,6 +5,12 @@ session_start();
 require_once __DIR__ . './connected/database.php';
 require_once __DIR__ . './connected/funcs.php';
 
+if (isset($_POST['register'])) {
+    registration();
+    header("Location: index.php");
+    die;
+}
+
 
 ?>
 
@@ -27,8 +33,8 @@ require_once __DIR__ . './connected/funcs.php';
         <div class="col">
             <?php if (isset($_SESSION['Errors'])): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <?php echo $_SESSION['ERRORS'];
-                    unset ($_SESSION['ERRORS']);
+                    <?php echo $_SESSION['Errors'];
+                    unset ($_SESSION['Errors']);
                     ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -36,8 +42,8 @@ require_once __DIR__ . './connected/funcs.php';
 
             <?php if (!empty($_SESSION['Success'])) : ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <?php echo $_SESSION['SUCCESS'];
-                    unset ($_SESSION['SUCCESS']);
+                    <?php echo $_SESSION['Success'];
+                    unset ($_SESSION['Success']);
                     ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
