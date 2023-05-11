@@ -1,8 +1,10 @@
 <?php
 
 error_reporting(-1);
+session_start();
 require_once __DIR__ . './connected/database.php';
 require_once __DIR__ . './connected/funcs.php';
+
 
 ?>
 
@@ -23,14 +25,19 @@ require_once __DIR__ . './connected/funcs.php';
 
     <div class="row my-3">
         <div class="col">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                Errors...
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                Success...
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+            <?php if (isset($_SESSION['Errors'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Errors...
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($_SESSION['Success'])) : ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    Success...
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 
