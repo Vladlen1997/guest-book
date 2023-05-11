@@ -18,5 +18,14 @@ function registration(): bool
         return false;
     }
 
+    $res = $pdo->prepare("SELECT COUNT(*) FROM users WHERE login = ?");
+    $res->execute([$login]);
+    if ($res->fetchColumn()) {
+        $_SESSION['errors'] = 'Данное имя уже используется';
+        return false;
+    }
+
+
+
 
 }
