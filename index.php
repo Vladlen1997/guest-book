@@ -27,14 +27,18 @@ require_once __DIR__ . './connected/funcs.php';
         <div class="col">
             <?php if (isset($_SESSION['Errors'])): ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Errors...
+                    <?php echo $_SESSION['ERRORS'];
+                    unset ($_SESSION['ERRORS']);
+                    ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
 
             <?php if (!empty($_SESSION['Success'])) : ?>
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Success...
+                    <?php echo $_SESSION['SUCCESS'];
+                    unset ($_SESSION['SUCCESS']);
+                    ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
