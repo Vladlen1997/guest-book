@@ -2,6 +2,7 @@
 
 error_reporting(-1);
 require_once __DIR__ . './connected/database.php';
+require_once __DIR__ . './connected/funcs.php';
 
 ?>
 
@@ -22,90 +23,90 @@ require_once __DIR__ . './connected/database.php';
 
     <div class="row my-3">
         <div class="col">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    Errors...
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    Success...
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                Errors...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Success...
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
         </div>
     </div>
 
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h3>Регистрация</h3>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h3>Регистрация</h3>
+        </div>
+    </div>
+
+    <form action="index.php" method="post" class="row g-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-floating mb-3">
+                <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Имя">
+                <label for="floatingInput">Имя</label>
             </div>
         </div>
 
-        <form action="index.php" method="post" class="row g-3">
-            <div class="col-md-6 offset-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Имя">
-                    <label for="floatingInput">Имя</label>
-                </div>
-            </div>
-
-            <div class="col-md-6 offset-md-3">
-                <div class="form-floating">
-                    <input type="password" name="pass" class="form-control" id="floatingPassword"
-                           placeholder="Password">
-                    <label for="floatingPassword">Пароль</label>
-                </div>
-            </div>
-
-            <div class="col-md-6 offset-md-3">
-                <button type="submit" name="register" class="btn btn-primary">Зарегистрироваться</button>
-            </div>
-        </form>
-
-        <div class="row mt-3">
-            <div class="col-md-6 offset-md-3">
-                <h3>Авторизация</h3>
+        <div class="col-md-6 offset-md-3">
+            <div class="form-floating">
+                <input type="password" name="pass" class="form-control" id="floatingPassword"
+                       placeholder="Password">
+                <label for="floatingPassword">Пароль</label>
             </div>
         </div>
 
-        <form action="index.php" method="post" class="row g-3">
-            <div class="col-md-6 offset-md-3">
-                <div class="form-floating mb-3">
-                    <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Имя">
-                    <label for="floatingInput">Имя</label>
-                </div>
-            </div>
+        <div class="col-md-6 offset-md-3">
+            <button type="submit" name="register" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+    </form>
 
-            <div class="col-md-6 offset-md-3">
-                <div class="form-floating">
-                    <input type="password" name="pass" class="form-control" id="floatingPassword"
-                           placeholder="Password">
-                    <label for="floatingPassword">Пароль</label>
-                </div>
-            </div>
+    <div class="row mt-3">
+        <div class="col-md-6 offset-md-3">
+            <h3>Авторизация</h3>
+        </div>
+    </div>
 
-            <div class="col-md-6 offset-md-3">
-                <button type="submit" name="auth" class="btn btn-primary">Войти</button>
-            </div>
-        </form>
-
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <p>Добро пожаловать, User! <a href="?do=exit">Log out</a></p>
+    <form action="index.php" method="post" class="row g-3">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-floating mb-3">
+                <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Имя">
+                <label for="floatingInput">Имя</label>
             </div>
         </div>
 
-        <form action="index.php" method="post" class="row g-3 mb-5">
-            <div class="col-md-6 offset-md-3">
-                <div class="form-floating">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-floating">
+                <input type="password" name="pass" class="form-control" id="floatingPassword"
+                       placeholder="Password">
+                <label for="floatingPassword">Пароль</label>
+            </div>
+        </div>
+
+        <div class="col-md-6 offset-md-3">
+            <button type="submit" name="auth" class="btn btn-primary">Войти</button>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <p>Добро пожаловать, User! <a href="?do=exit">Log out</a></p>
+        </div>
+    </div>
+
+    <form action="index.php" method="post" class="row g-3 mb-5">
+        <div class="col-md-6 offset-md-3">
+            <div class="form-floating">
                 <textarea class="form-control" name="message" placeholder="Leave a comment here"
                           id="floatingTextarea" style="height: 100px;"></textarea>
-                    <label for="floatingTextarea">Сообщение</label>
-                </div>
+                <label for="floatingTextarea">Сообщение</label>
             </div>
+        </div>
 
-            <div class="col-md-6 offset-md-3">
-                <button type="submit" name="add" class="btn btn-primary">Отправить</button>
-            </div>
-        </form>
+        <div class="col-md-6 offset-md-3">
+            <button type="submit" name="add" class="btn btn-primary">Отправить</button>
+        </div>
+    </form>
 
     <div class="row">
         <div class="col-md-6 offset-md-3">
