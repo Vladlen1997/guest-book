@@ -53,9 +53,18 @@ function login(): bool
 
     $res = $pdo->prepare("SELECT * FROM users WHERE login = ?");
     $res->execute([$login]);
-    if (!$user = $res->fetchColumn()) {
+    if (!$user = $res->fetch()) {
         $_SESSION['Errors'] = 'Логин/пароль введены неверно!';
         return false;
     }
 
+    if(!password_verify($pass, $user['pass'])) {
+        $_SESSION['Errors'] = 'Логин/пароль введены неверно!';
+        return false;
+    } else {
+        $_SESSION['Success'] = 'Вы успешно авторизовались!';
+        $_SESSION['user']['name'] = $user['login'];
+        $_SESSION['user']['id'] = $user['id'];
+        return true;
+    }
 }
