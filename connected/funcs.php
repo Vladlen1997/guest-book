@@ -27,11 +27,27 @@ function registration(): bool
 
     $pass = password_hash($pass, PASSWORD_DEFAULT);
     $res = $pdo->prepare("INSERT INTO users (login, pass) VALUES (?,?)");
-    if($res->execute([$login, $pass])) {
+    if ($res->execute([$login, $pass])) {
         $_SESSION['Success'] = 'Успешная регистрация';
         return true;
     } else {
         $_SESSION['Errors'] = 'ошибка регистрации';
+        return false;
+    }
+
+
+}
+
+function login(): bool
+{
+    global $pdo;
+
+
+    $login = !empty($_POST['login']) ? trim($_POST['login']) : '';
+    $pass = !empty($_POST['pass']) ? trim($_POST['pass']) : '';
+
+    if (empty($login) || empty($pass)) {
+        $_SESSION['Errors'] = 'Поля логин/пароль обязательны!';
         return false;
     }
 
