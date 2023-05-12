@@ -11,6 +11,12 @@ if (isset($_POST['register'])) {
     die;
 }
 
+if (isset($_POST['auth']))  {
+    login();
+    header("Location: index.php");
+    die;
+}
+
 
 ?>
 
