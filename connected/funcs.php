@@ -58,7 +58,7 @@ function login(): bool
         return false;
     }
 
-    if(!password_verify($pass, $user['pass'])) {
+    if (!password_verify($pass, $user['pass'])) {
         $_SESSION['Errors'] = 'Логин/пароль введены неверно!';
         return false;
     } else {
@@ -67,4 +67,22 @@ function login(): bool
         $_SESSION['user']['id'] = $user['id'];
         return true;
     }
+}
+
+function save_message(): bool
+{
+    global $pdo;
+    $message = !empty($_POST['message']) ? trim($_POST['message']) : '';
+
+    if (!isset($_SESSION['user']['name']) {
+        $_SESSION['Errors'] = 'Необходимо авторизоваться';
+        return false;
+    }
+
+    if (empty($message)) {
+        $_SESSION['Errors'] = 'Введите текст сообщения';
+        return false;
+    }
+
+    $res = $pdo->prepare("INSERT INTO messages (name, message) VALUES (?, ?)");
 }
