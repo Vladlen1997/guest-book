@@ -51,5 +51,11 @@ function login(): bool
         return false;
     }
 
+    $res = $pdo->prepare("SELECT * FROM users WHERE login = ?");
+    $res->execute([$login]);
+    if (!$user = $res->fetchColumn()) {
+        $_SESSION['Errors'] = 'Логин/пароль введены неверно!';
+        return false;
+    }
 
 }
